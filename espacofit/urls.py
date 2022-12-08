@@ -22,7 +22,9 @@ from academia import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('academia.urls')),
+    path('academia/', include('academia.urls')),
+    path('', include('contas.urls')),
+    path('alunos/', include('alunos.urls')),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
