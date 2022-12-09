@@ -379,6 +379,10 @@ th {
   text-align: -webkit-match-parent;
 }
 
+.th{
+  color: white;
+}
+
 thead,
 tbody,
 tfoot,

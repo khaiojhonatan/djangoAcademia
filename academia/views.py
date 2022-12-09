@@ -4,8 +4,8 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'templates/index.html')
 
-def alunos(request):
-    return render(request, 'templates/alunos.html')
+def cobrancas(request):
+    return render(request, 'templates/cobrancas.html')
 
-def perfil(request):
-    return render(request, 'templates/perfil.html')
+def notificacao(request):
+    return render(request, 'templates/notificacao.html')

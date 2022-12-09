@@ -7,8 +7,9 @@ from django.contrib.auth.decorators import login_required
 
 # @login_required(login_url='login')  ------------------------------- DANDO ERRO AO ADICIONAR ESTÁ LINHA ----------------------------------
 
+
 def alunos(request):
-    return render(request, 'templates/alunos.htlm')
+    return render(request, 'template_alunos/alunos.html')
 
 def cad_alunos(request):
     if request.method == "POST":
@@ -23,28 +24,28 @@ def cad_alunos(request):
         if not usuario or not nome or not sobrenome \
                 or not email or not senha1 or not senha2:
             messages.error(request, "Não pode deixar campos em branco!")
-            return render(request, 'templates/cad_alunos.html')
+            return render(request, 'template_alunos/cad_alunos.html')
 
         if len(usuario) < 4:
             messages.info(request, "Nome de usuário muito curto!")
-            return render(request, 'templates/cad_alunos.html')
+            return render(request, 'template_alunos/cad_alunos.html')
         try:
             validate_email(email)
         except:
             messages.info(request, "E-mail inválido!")
-            return render(request, 'templates/cad_alunos.html')
+            return render(request, 'template_alunos/cad_alunos.html')
 
         if senha1 != senha2:
             messages.error(request, "Senhas diferentes!")
-            return render(request, 'templates/cad_alunos.html')
+            return render(request, 'template_alunos/cad_alunos.html')
 
         if User.objects.filter(username=usuario).exists():
             messages.error(request, "Usuário já existe.")
-            return render(request, 'templates/cad_alunos.html')
+            return render(request, 'template_alunos/cad_alunos.html')
 
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email já existe.")
-            return render(request, 'templates/cad_alunos.htmll')
+            return render(request, 'template_alunos/cad_alunos.htmll')
 
         messages.success(request, "Registrado com sucesso!")
 
@@ -56,7 +57,7 @@ def cad_alunos(request):
 
         return redirect('login')
 
-    return render(request, 'templates/cad_alunos.html')
+    return render(request, 'template_alunos/cad_alunos.html')
 
 
 @login_required(login_url='login')
