@@ -22,8 +22,8 @@ from academia import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('academia/', include('academia.urls')),
     path('', include('contas.urls')),
+    path('academia/', include('academia.urls')),
     path('alunos/', include('alunos.urls')),
 
 ]

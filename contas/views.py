@@ -17,12 +17,12 @@ def sign_in(request):
         else:
             auth.login(request, user)
             messages.success(request, "Login realizado com sucesso!")
-            return redirect('login')
+            return redirect('index')
 
     return render(request, 'contas/sign_in.html')
 
 
-def logout(request):
+def sign_out(request):
     auth.logout(request)
     messages.success(request, "Usuário deslogado!")
     return redirect('login')
