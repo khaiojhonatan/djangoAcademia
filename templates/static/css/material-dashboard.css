@@ -114,6 +114,13 @@ body {
   }
 }
 
+.lado_a_lado{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -2743,7 +2750,7 @@ progress {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5rem;
-  color: #495057;
+  color: #898a8a;
   background-color: transparent;
   background-clip: padding-box;
   border: 1px solid #d2d6da;
@@ -22275,6 +22282,7 @@ body.dark-version {
 .input-group.input-group-outline .form-label:before,
 .input-group.input-group-outline .form-label:after {
   content: "";
+  
   border-top: solid 1px;
   border-top-color: #d2d6da;
   pointer-events: none;
