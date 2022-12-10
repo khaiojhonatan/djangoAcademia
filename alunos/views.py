@@ -26,6 +26,7 @@ def cad_alunos(request):
         bairro = request.POST.get('bairro')
         rua = request.POST.get('rua')
         numero = request.POST.get('numero')
+
         dat_medidas = request.POST.get('dat_medidas')
         # Objetivo
         # Status da matricula
@@ -49,7 +50,7 @@ def cad_alunos(request):
         if not nome or not nascimento or not telefone \
                 or not email or not rg or not cpf or not bairro\
                 or not rua or not numero or not inscricao:
-            messages.error(request, "Não pode deixar campos da área de dados pessoas em branco!")
+            messages.error(request, "Não pode deixar campos da área de dados pessoais em branco!")
             return render(request, 'template_alunos/cad_alunos.html')
         try:
             validate_email(email)
@@ -59,14 +60,21 @@ def cad_alunos(request):
 
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email já existente!")
-            return render(request, 'template_alunos/cad_alunos.htmll')
+            return render(request, 'template_alunos/cad_alunos.html')
 
         messages.success(request, "Registrado com sucesso!")
 
-        Alunos.objects.create(name='nome', nasc='nascimento', phone='telefone' ,email='email',
-                                        rg='rg', cpf='cpf', bairro='bairro', rua='rua', num_residencia='numero', dat_inscricao='inscricao')
+        Alunos.objects.create(inscricao ='inscricao', nome='nome', nascimento='nascimento', telefone='telefone' , email='email',
+                                        rg='rg', cpf='cpf', bairro='bairro', rua='rua', num_residencia='numero')
+
+
+        DadosAcademia.objects.create(dat_medidas='dat_medidas', altura ='altura', peso = 'peso', imc = 'imc', gordura = 'gordura',
+                                    liquido = 'liquido', pa = 'pa', pulso = 'pulso', bat_cardiaco = 'bat_cardiaco', quadriceps = 'quadriceps',
+                                    torax = 'torax', cintura = 'cintura', culote = 'culote', biceps_D = 'biceps_D', biceps_E = 'biceps_E',
+                                    coxa_D = 'coxa_D', coxa_E = 'coxa_E')
 
         Alunos.save()
+        DadosAcademia.save()
 
         return redirect('alunos')
 
