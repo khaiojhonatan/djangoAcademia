@@ -37,55 +37,55 @@
                     <fieldset style="border-width: 2px; border-color: black; text-align: center;">
                       <legend>Dados Pessoais</legend>
                       {% csrf_token %}
-                      <div class="row car mb-2">  
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                      <div class="row2 car mb-2">  
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="inscricao">Data de Inscrição </label>
                           <input type="date" name="inscricao" value="{{request.POST.nome}}" class="form-control" id="inscricao" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                             <label  class="form-label" for="nome">Nome completo do Aluno </label>
                             <input type="text" name="nome" value="{{request.POST.nome}}" class="form-control" id="nome" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <select class="form-control input-group input-group-outline" id="sexo" name="sexo" style="width:150px" data-component="dropdown" required="">
                             <option value="">Sexo</option>
                             <option value="{{request.POST.masculino}}">Masculino</option>
                             <option value="{{request.POST.feminino}}">Feminino</option>
                           </select>
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="nascimento">Nascimento </label>
                           <input type="date" name="nascimento" value="{{request.POST.nascimento}}" class="form-control" id="nascimento" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                             <label class="form-label" for="telefone">Telefone: </label>
                             <input type="tel" name="telefone" value="{{request.POST.sobrenome}}" class="form-control" id="telefone" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                             <label class="form-label" for="email">E-mail: </label>
                             <input type="email" name="email" value="{{request.POST.email}}" class="form-control" id="email" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="rg">RG</label>
                           <input type="number" name="rg" value="{{request.POST.email}}" class="form-control" id="rg" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="cpf">CPF</label>
                           <input type="number" name="cpf" value="{{request.POST.email}}" class="form-control" id="cpf" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="bairro">Bairro</label>
                           <input type="text" name="bairro" value="{{request.POST.nome}}" class="form-control" id="bairro" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="rua">Rua</label>
                           <input type="text" name="rua" value="{{request.POST.nome}}" class="form-control" id="rua" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="numero">Nº da Residência</label>
                           <input type="text" name="numero" value="{{request.POST.nome}}" class="form-control" id="numero" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="observacao">Observação</label>
                           <input type="text" name="observacao" value="{{request.POST.nome}}" class="form-control" id="observacao" autocomplete="off">
                         </div>
@@ -94,12 +94,12 @@
 
                     <fieldset style="border-width: 2px; border-color: black; text-align: center;">
                       <legend>Dados para a Academia</legend>
-                      <div class="row car mb-2">
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                      <div class="row2 car mb-2">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="dat_medidas">Data de Coleta das Medidas</label>
                           <input type="date" name="dat_medidas" value="{{request.POST.dat_medidas}}" class="form-control" id="dat_medidas" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="objetivo">Objetivo</label>
                           <select class="form-control input-group input-group-outline" id="objetivo" name="objetivo" style="width:150px" data-component="dropdown" required="">
                             <option value=""></option>
@@ -109,74 +109,74 @@
                             <option value="{{request.POST.cardio}}">Trabalho Cádio</option>
                           </select>
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <select class="form-control input-group input-group-outline" id="status" name="status" style="width:150px" data-component="dropdown" required="">
                             <option value="">Status da Matrícula</option>
                             <option value="{{request.POST.masculino}}">Matrículado</option>
                             <option value="{{request.POST.feminino}}">Inativo</option>
                           </select>
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="altura">Altura</label>
                           <input type="number" name="altura" value="{{request.POST.altura}}" class="form-control" id="altura" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="peso">Peso</label>
                           <input type="number" name="peso" value="{{request.POST.altura}}" class="form-control" id="peso" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="imc">Índice de Massa muscular</label>
                           <input type="number" name="imc" value="{{request.POST.altura}}" class="form-control" id="imc" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="gordura">Gordura</label>
                           <input type="number" name="gordura" value="{{request.POST.gordura}}" class="form-control" id="gordura" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="liquido">Líquido</label>
                           <input type="number" name="liquido" value="{{request.POST.altura}}" class="form-control" id="liquido" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="pa">Pressão Artérial</label>
                           <input type="number" name="pa" value="{{request.POST.altura}}" class="form-control" id="pa" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="pulso">Pulso</label>
                           <input type="number" name="pulso" value="{{request.POST.altura}}" class="form-control" id="pulso" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="bat_cardiaco">Batimento Cardiaco</label>
                           <input type="number" name="bat_cardiaco" value="{{request.POST.altura}}" class="form-control" id="bat_cardiaco" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="quadriceps">Quádriceps</label>
                           <input type="number" name="quadriceps" value="{{request.POST.altura}}" class="form-control" id="quadriceps" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="torax">Torax</label>
                           <input type="number" name="torax" value="{{request.POST.altura}}" class="form-control" id="torax" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="cintura">Cintura</label>
                           <input type="number" name="cintura" value="{{request.POST.altura}}" class="form-control" id="cintura" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="culote">Culote</label>
                           <input type="number" name="culote" value="{{request.POST.altura}}" class="form-control" id="culote" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="biceps_D">Bíceps Direito</label>
                           <input type="number" name="biceps_D" value="{{request.POST.altura}}" class="form-control" id="biceps_D" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="biceps_E">Bíceps Esquerdo</label>
                           <input type="number" name="biceps_E" value="{{request.POST.altura}}" class="form-control" id="biceps_E" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="coxa_D">Coxa Direita</label>
                           <input type="number" name="coxa_D" value="{{request.POST.altura}}" class="form-control" id="coxa_D" autocomplete=" Direitaoff">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="coxa_E">Coxa Esquerda</label>
                           <input type="number" name="coxa_E" value="{{request.POST.altura}}" class="form-control" id="coxa_E" autocomplete="off">
                         </div>
@@ -184,8 +184,8 @@
                     </fieldset>
                     <fieldset style="border-width: 2px; border-color: black; text-align: center;">
                       <legend>Séries/Exercícios Sugeridos</legend>
-                      <div class="row car mb-2">
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                      <div class="row2 car mb-2">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <select class="form-control input-group input-group-outline" id="dia_semanal" name="dia_semanal" style="width:150px" data-component="dropdown" required="">
                             <option value="">Dia Semanal</option>
                             <option value="{{request.POST.segunda}}">Segunda-Feira</option>
@@ -196,15 +196,15 @@
                             <option value="{{request.POST.sabado}}">Sábado</option>
                           </select>
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="musc_trabalhado">Musculo Trabalhado</label>
                           <input type="text" name="musc_trabalhado" value="{{request.POST.altura}}" class="form-control" id="musc_trabalhado" autocomplete="off">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="series">Séries</label>
                           <input type="text" name="series" value="{{request.POST.altura}}" class="form-control" id="series" autocomplete=" Direitaoff">
                         </div>
-                        <div class="input-group input-group-outline mb-3" style="width: 22%;">
+                        <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                           <label class="form-label" for="repeticoes">Repetições</label>
                           <input type="text" name="repeticoes" value="{{request.POST.altura}}" class="form-control" id="repeticoes" autocomplete=" Direitaoff">
                         </div>
