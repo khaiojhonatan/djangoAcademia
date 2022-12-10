@@ -313,6 +313,50 @@ code {
   z-index: 1;
 }
 
+#modal2 {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  visibility: hidden;
+}
+#modal2:target {
+  opacity: 1;
+  visibility: visible;
+}
+#modal2:target .modal-body {
+  opacity: 1;
+  transform: translateY(1);
+}
+#modal2 .modal-body {
+  max-width: 500px;
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: opacity 0.25s ease-in-out;
+  width: 100%;
+  z-index: 1;
+}
+
+#modal3 {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  visibility: hidden;
+}
+#modal3:target {
+  opacity: 1;
+  visibility: visible;
+}
+#modal3:target .modal-body {
+  opacity: 1;
+  transform: translateY(1);
+}
+#modal3 .modal-body {
+  max-width: 500px;
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: opacity 0.25s ease-in-out;
+  width: 100%;
+  z-index: 1;
+}
+
 .outside-trigger {
   bottom: 0;
   cursor: default;
