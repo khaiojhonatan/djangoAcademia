@@ -27,17 +27,14 @@
         <div class="col-12">
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <div class="input-group input-group-outline">
-                  <form action="{% url 'alunos' %}" class="form-inline">
-                    <input class="form-control" autocomplete="off" type="search" name="termo" placeholder="Pesquisar"
-                      aria-label="Pesquisar">
-                    <button  class="btn bg-gradient-primary w-100 my-4 mb-2" style="color: rgb(241, 232, 232);  width: 26%; height: 36%;" type="submit">Pesquisar</button>
+              <div class=" navbar bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                  <a href="{% url 'cad_alunos' %}"><button type="button" class="btn btn-primary">Cadastrar aluno</button></a>
+                  <form style=" display: inline-flex; flex-direction: row;">
+                    <div class="input-group input-group-outline mb-3">
+                      <input class="form-control" autocomplete="off" type="search" name="termo" placeholder="Pesquisar" aria-label="Pesquisar">
+                    </div>
+                    <button  class="btn btn-primary" style="width: 250px;" type="submit">Pesquisar</button>
                   </form>
-                </div>
-                <div>  
-                  <a style="color: rgb(241, 232, 232);  width: 26%; height: 36%;" href="{% url 'cad_alunos' %}"><button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Cadastrar Aluno</button></a>
-                </div>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
