@@ -305,11 +305,11 @@ code {
   transform: translateY(1);
 }
 #modal .modal-body {
-  max-width: 60%;
+  max-width: 61%;
   opacity: 0;
-  transform: translateY(-100px);
+  transform: translateX(130px);
   transition: opacity 0.25s ease-in-out;
-  width: 100%;
+  width: 102%;
   z-index: 1;
 }
 
@@ -327,11 +327,11 @@ code {
   transform: translateY(1);
 }
 #modal2 .modal-body {
-  max-width: 60%;
+  max-width: 61%;
   opacity: 0;
-  transform: translateY(-100px);
+  transform: translateX(130px);
   transition: opacity 0.25s ease-in-out;
-  width: 100%;
+  width: 102%;
   z-index: 1;
 }
 
@@ -349,11 +349,11 @@ code {
   transform: translateY(1);
 }
 #modal3 .modal-body {
-  max-width: 60%;
+  max-width: 61%;
   opacity: 0;
-  transform: translateY(-100px);
+  transform: translateX(130px);
   transition: opacity 0.25s ease-in-out;
-  width: 100%;
+  width: 102%;
   z-index: 1;
 }
 
@@ -373,6 +373,7 @@ code {
 .div_treino{
   margin: 10px;
   padding: 10px;
+  max-width: 30%;
 }
 
 p {
