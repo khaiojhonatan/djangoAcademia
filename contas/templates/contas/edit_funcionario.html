@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block titleh %}Editar{% endblock titleh %}
+
+{% block titulo %}Editar Usuário{% endblock titulo %}
+
+{% block conteudo %}
+
+<div class="table-responsive p-0">
+  <div class="card-plain">
+    <div class="card-body">
+      <a href="#modal" role="button" class="button button__link">Treinos para ganho de força</a>
+    </div>
+    <!-- Modal Treino Ganho de força -->
+    <div class="modal-wrapper" id="modal">
+      <div class="modal-body card" style="background-color: #f1f5f7;" >
+        <div class="modal-header">
+          <h2 class="heading">StrongLifts</h2>
+          <a href="#!" role="button" class="close" aria-label="close this modal">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+            </svg>
+          </a>
+        </div>
+        <div class="card card-plain">
+          <div class="card-header">
+            <h4 class="font-weight-bolder">Editar {{User.nome}}</h4>
+          </div>
+          <div class="card-body" >
+            <!-- formulário -->          
+            <form method="POST" role="form">
+              {% csrf_token %}
+              <div class="input-group input-group-outline mb-3">
+                  <label class="form-label" for="usuario">Usuário: </label>
+                  <input type="text" name="usuario" value="{{request.user.username}}" class="form-control" id="usuario" autocomplete="off" readonly>
+              </div>
+              <div class="input-group input-group-outline mb-3">
+                  <label class="form-label" for="email">E-mail: </label>
+                  <input type="email" name="email" value="{{request.user.email}}" class="form-control" id="email" autocomplete="off" readonly>
+              </div>
+              <div class="input-group input-group-outline mb-3">
+                  <label class="form-label" for="senha1">Senha: </label>
+                  <input type="password" name="senha1" class="form-control" id="senha1">
+                </div>
+              <div class="input-group input-group-outline mb-3">
+                <label class="form-label" for="senha2">Repita Senha:</label>
+                <input type="password" name="senha2" class="form-control" id="senha2">
+              </div>
+              <button type="submit" class="btn btn-primary">Cadastrar</button>
+              <button type="reset" class="btn btn-secondary">Limpar</button> 
+            </form>
+          <!-- fim do formulário -->
+          </div>
+        </div>
+      </div>
+      <a href="#!" class="outside-trigger"></a>
+    </div>
+  </div>
+  <br />
+</div>
+{% endblock conteudo %}

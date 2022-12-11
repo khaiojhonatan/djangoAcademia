@@ -13,8 +13,5 @@ def cobrancas(request, Alunos_id, Alunos_divida):
     return render(request,'templates/cobrancas.html', {Alunos_id: Alunos_id, Alunos_divida: Alunos_divida})
 
 
-def notificacao(request):
-    return render(request, 'templates/notificacao.html')
-
 def treinos(request):
     return render(request, 'templates/treinos.html')
