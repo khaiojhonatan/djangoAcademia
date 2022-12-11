@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
+from django.core.paginator import Paginator
 from django.core.validators import validate_email
 from django.contrib.auth.models import AbstractUser, User
 from django.contrib.auth.decorators import login_required
@@ -8,9 +9,21 @@ from .models import Alunos
 
 # @login_required(login_url='login')  ------------------------------- DANDO ERRO AO ADICIONAR ESTÁ LINHA ----------------------------------
 
-
+@login_required(login_url='login')
 def alunos(request):
+    if request.GET.get('termo'):
+        termo = request.GET.get('termo')
+        alunos = Alunos.objects.filter(Q(nome__icontains=termo)
+                                          | Q(cpf__icontains=cpf))
+    else:
+        alunos = Alunos.objects.order_by('-id')
+
+    paginator = Paginator(alunos, 10)
+    page = request.GET.get('page')
+    alunos = paginator.get_page(page)
+
     return render(request, 'template_alunos/alunos.html')
+    
 
 def cad_alunos(request):
     if request.method == "POST":

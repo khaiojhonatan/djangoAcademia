@@ -45,39 +45,43 @@
                       </a>
                     </div>
                     <div style="display: grid;">
-                      <h2 class="heading" style="text-align: center;">Dia 1 </h2>
-                      <div style="display: flex; justify-content: space-between;">
-                        <div class="div_treino card">
-                          <h6>Agachamento com barra (5 séries x 5 repetições)</h6>
-                          <img src="{% static 'img/gifs/agachamento-com-barra.webp' %}" style="width: 150px; align-self: center;">
-                        </div>
-                        <div class="div_treino card">
-                          <h6>Supino reto com barra (5 séries x 5 repetições) </h6>
-                          <img src="{% static 'img/gifs/supino-reto.webp' %}" style="width: 150px; align-self: center;">
-                        </div>
-                        <div class="div_treino card">
-                          <h6>Remada curvada com barra (5 séries x 5 repetições) </h6>
-                          <img src="{% static 'img\gifs\costas-remada-curvada- (1).png' %}" style="width: 150px; align-self: center;">
-                        </div>
-                      </div>
-                      <div style="display: grid;">
-                        <h2 class="heading" style="text-align: center;">Dia 2 </h2>
-                        <div style="display: flex; justify-content: space-between;">
-                          <div class="div_treino card">
-                            <h6>Agachamento com barra (5 séries x 5 repetições) </h6>
-                            <img src="{% static 'img/gifs/agachamento-com-barra.webp' %}" style="width: 150px; align-self: center;">
-                          </div>
-                          <div class="div_treino card">
-                            <h6>Desenvolvimento militar com barra (5 séries x 5 repetições) </h6>
-                            <img src="{% static 'img\gifs\desenvolvimento-militar-frontal-com-barra.png'%}"
-                              style="width: 150px;  align-self: center;">
-                          </div>
-                          <div class="div_treino card">
-                            <h6>Levantamento terra com barra (5 séries x 5 repetições) </h6>
-                            <img src="{% static 'img\gifs\levantamento-terra.png' %}" style="width: 150px; align-self: center;">
-                          </div>
-                        </div>
-                      </div>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Descrição</th>
+                                <th>Categoria</th>
+                                <th colspan="2">Operações</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for produto in produtos %}
+                              <tr>
+                                <td>{{produto.id}}</td>
+                                <td> <a href="{% url 'edit_produto' produto.id %}">{{produto.nome}}</a> </td>
+                                <td>{{produto.preco}}</td>
+                                <td>{{produto.descricao}}</td>
+                                <td>{{produto.categoria}}</td>
+                                <td>
+                                  <a title='editar' href="{% url 'edit_produto' produto.id %}"><img src="{% static '/vendor/images/editar.png'%}"
+                                      width='33px'></a>
+                                </td>
+                                <td>
+                                  <a title='excluir' data-toggle="modal" data-target="#modalExemplo{{produto.id}}"><img
+                                      src="{% static '/vendor/images/excluir.png'%}" width='35px'></a>
+                                </td>
+                                <!-- Modal -->
+                                {% include 'modulos/_delete_modal.html'%}
+                              </tr>
+                              {%endfor%}
+                            </tbody>
+                          </table>
+                          <!-- Paginacao -->
+                          {%include 'modulos/_paginacao_nav.html'%}
+                          
+                          {%endblock conteudo%}
                     </div>
                   </div>
                   <a href="#!" class="outside-trigger"></a>
