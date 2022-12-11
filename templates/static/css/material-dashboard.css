@@ -305,7 +305,7 @@ code {
   transform: translateY(1);
 }
 #modal .modal-body {
-  max-width: 500px;
+  max-width: 60%;
   opacity: 0;
   transform: translateY(-100px);
   transition: opacity 0.25s ease-in-out;
@@ -327,7 +327,7 @@ code {
   transform: translateY(1);
 }
 #modal2 .modal-body {
-  max-width: 500px;
+  max-width: 60%;
   opacity: 0;
   transform: translateY(-100px);
   transition: opacity 0.25s ease-in-out;
@@ -349,7 +349,7 @@ code {
   transform: translateY(1);
 }
 #modal3 .modal-body {
-  max-width: 500px;
+  max-width: 60%;
   opacity: 0;
   transform: translateY(-100px);
   transition: opacity 0.25s ease-in-out;
@@ -368,6 +368,11 @@ code {
 
 .button__link {
   text-decoration: none;
+}
+
+.div_treino{
+  margin: 10px;
+  padding: 10px;
 }
 
 p {
