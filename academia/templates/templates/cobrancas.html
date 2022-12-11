@@ -13,52 +13,71 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 {% extends 'base.html' %}
-
 {% load static %}
 
-{% block titleh %}Cadastro{% endblock titleh %}
+{% block titleh %}Cobrança{% endblock titleh %}
 
-{% block titulo %}Cadastrar de Aluno{% endblock titulo %}
+{% block titulo %}Cobrança{% endblock titulo %}
 
 {% block conteudo %}
+
+<!-- Page Content -->
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-  <div class="page-header min-vh-100">
-    <div class="container">
-      <div class="row">
-        <table class="table">
-            <thead>
-              <tr>
-                <th class="th">ID</th>
-                <th class="th">Nome</th>
-                <th class="th">Preço</th>
-                <th class="th">Descrição</th>
-                <th class="th">Categoria</th>
-                <th class="th" colspan="2">Operações</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for produto in produtos %}
-              <tr>
-                <td>{{produto.id}}</td>
-                <td> <a href="#">{{produto.nome}}</a> </td>
-                <td>{{produto.preco}}</td>
-                <td>{{produto.descricao}}</td>
-                <td>{{produto.categoria}}</td>
-                <td>
-                  <a title='editar' href="#"><img src=""
-                      width='33px'></a>
-                </td>
-                <td>
-                  <a title='excluir' data-toggle="modal" data-target="#modalExemplo{{produto.id}}"><img
-                      src="" width='35px'></a>
-                </td>
-                <!-- Modal -->
-              </tr>
-              {%endfor%}
-            </tbody>
-        </table>
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+              <form action="{% url 'alunos' %}" class="form-inline">
+                <input class="form-control mr-sm-2" autocomplete="off" type="search" name="termo" placeholder="Pesquisar"
+                  aria-label="Pesquisar">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
+              </form>
+            </div>
+          </div>
+          <div class="card-body px-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomes</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Próxima mensalidade</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for alunos in alunos %}
+                  <tr>
+                    <td> {{aluno.id}}
+                      <div class="d-flex px-2 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{aluno.nome}}</h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">{{aluno.inscricao}}</p>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-success">Mensagem "Dentro do prazo"</span>
+                    </td>
+                    <td>
+                      <a title='editar' href="{% url 'cobrancas' aluno.id %}"> PAGO </a>
+                    </td>
+                    </td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </main>
+<!-- Paginacao -->
+{%include 'modulos/_paginacao_nav.html'%}
+
 {%endblock conteudo%}

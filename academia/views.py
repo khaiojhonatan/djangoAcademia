@@ -4,8 +4,15 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'templates/index.html')
 
-def cobrancas(request):
-    return render(request, 'templates/cobrancas.html')
+def cobrancas(request, aluno_id):
+    aluno = Aluno.objects.get(id=aluno_id)
+    print ("Teste")
+
+    if request.method == "POST":
+        status = 'pago'
+        
+    return redirect('cobrancas')
+
 
 def notificacao(request):
     return render(request, 'templates/notificacao.html')
