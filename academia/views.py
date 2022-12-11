@@ -4,14 +4,13 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'templates/index.html')
 
-def cobrancas(request, aluno_id):
-    aluno = Aluno.objects.get(id=aluno_id)
-    print ("Teste")
+def cobrancas(request, Alunos_id, Alunos_divida):
+    Alunos =Alunos.objects.get(id=Alunos_id)
 
-    if request.method == "POST":
-        status = 'pago'
+    if request.method == "POST" and Alunos_divida == True:
+        Alunos_divida = False
         
-    return redirect('cobrancas')
+    return render(request,'templates/cobrancas.html', {Alunos_id: Alunos_id, Alunos_divida: Alunos_divida})
 
 
 def notificacao(request):

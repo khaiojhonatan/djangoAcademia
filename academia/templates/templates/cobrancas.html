@@ -42,28 +42,33 @@
                 <thead>
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomes</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Próxima mensalidade</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Vencimento da mensalidade</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {% for alunos in alunos %}
+                  {% for Alunos in Alunos %}
                   <tr>
-                    <td> {{aluno.id}}
+                    <td> {{Alunos.id}}
                       <div class="d-flex px-2 py-1">
                         <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{aluno.nome}}</h6>
+                          <h6 class="mb-0 text-sm">{{Alunos.nome}}</h6>
                         </div>
                       </div>
                     </td>
                     <td>
-                      <p class="text-xs font-weight-bold mb-0">{{aluno.inscricao}}</p>
+                      <p class="text-xs font-weight-bold mb-0">{{Alunos.inscricao}}</p>
                     </td>
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Mensagem "Dentro do prazo"</span>
+                      {% if Alunos.divida == False %}
+                      <span class="badge badge-sm bg-gradient-success"></span>
+                      {% else %}
+                      <span class="badge badge-sm bg-gradient-primary"></span>
+                      {% endif %}
                     </td>
                     <td>
-                      <a title='editar' href="{% url 'cobrancas' aluno.id %}"> PAGO </a>
+                      <a title='editar' href="{% url 'cobrancas' Alunos.id %}"> PAGOU </a>
+                      
                     </td>
                     </td>
                   </tr>
