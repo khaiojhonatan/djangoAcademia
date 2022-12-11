@@ -80,22 +80,22 @@ def sign_up(request):
 
 
 @login_required(login_url='login')
-def edit_cadastro(request):
+def edit_funcionario(request):
     if request.method == "POST":
         senha1 = request.POST.get("senha1")
         senha2 = request.POST.get("senha2")
 
         if not senha1 or not senha2:
             messages.error(request, "Não pode deixar as senhas em branco!")
-            return render(request, 'contas/edit_cadastro.html')
+            return render(request, 'contas/edit_funcionario.html')
 
-        if len(senha1)<8:
+        if len(senha1)<4:
             messages.error(request, "Senha muito curta!")
-            return render(request, 'contas/edit_cadastro.html')
+            return render(request, 'contas/edit_funcionario.html')
 
         if senha1 != senha2:
             messages.error(request, "Senhas diferentes!")
-            return render(request, 'contas/edit_cadastro.html')
+            return render(request, 'contas/edit_funcionario.html')
 
         user = get_object_or_404(User, username=request.user)
 
@@ -107,4 +107,4 @@ def edit_cadastro(request):
         return redirect('login')
 
     # user = get_object_or_404(User, username=request.GET.get(user.username))
-    return render(request, 'contas/edit_cadastro.html')
+    return render(request, 'contas/edit_funcionario.html')

@@ -7,8 +7,5 @@ def index(request):
 def cobrancas(request):
     return render(request, 'templates/cobrancas.html')
 
-def notificacao(request):
-    return render(request, 'templates/notificacao.html')
-
 def treinos(request):
     return render(request, 'templates/treinos.html')
