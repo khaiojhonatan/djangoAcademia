@@ -1,2 +1,4 @@
 
 venv/
+meusite/
+meusite/Lib/site-packages/asgiref/__pycache__/current_thread_executor.cpython-310.pyc
