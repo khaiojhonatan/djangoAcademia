@@ -22,6 +22,7 @@ class DadosAcademia(models.Model):
     coxa_D = models.FloatField(blank =True, null= True)
     coxa_E = models.FloatField(blank =True, null= True)
 
+
 class Alunos(models.Model):
 
     inscricao = models.DateField()
@@ -30,7 +31,7 @@ class Alunos(models.Model):
     telefone = models.CharField(max_length=25)
     email = models.CharField(max_length=80)
     rg = models.CharField(max_length=11)
-    cpf = models.CharField(max_length=13)
+    cpf = models.CharField(primary_key= True, max_length=13)
     bairro = models.CharField(max_length=40)
     rua = models.CharField(max_length=80)
     num_residencia = models.CharField(max_length=10)
