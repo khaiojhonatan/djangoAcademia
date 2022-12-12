@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class DadosAcademia(models.Model):
 
-    dat_medidas = models.CharField(max_length=10)
+    dat_medidas = models.CharField(blank =True, null= True, max_length=10)
     altura = models.FloatField(blank =True, null= True)
     peso = models.FloatField(blank =True, null= True)
     imc = models.FloatField(blank =True, null= True)

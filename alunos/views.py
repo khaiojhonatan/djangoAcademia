@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib import messages, auth
+from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.core.validators import validate_email
-from django.contrib.auth.models import AbstractUser, User
+from django.contrib.auth.models import  User
 from django.contrib.auth.decorators import login_required
 from .models import Alunos, DadosAcademia
-from .forms import AlunosModelForm, DadosAcademiaModelForm
 from datetime import date
 # Create your views here.
 
@@ -14,7 +14,7 @@ def alunos(request):
     if request.GET.get('termo'):
         termo = request.GET.get('termo')
         alunos = Alunos.objects.filter(Q(nome__icontains=termo)
-                                          | Q(cpf__icontains=cpf))
+                                          | Q(cpf__icontains=termo))
     else:
         alunos = Alunos.objects.all()
 
@@ -57,11 +57,11 @@ def cad_alunos(request):
         coxa_D = request.POST.get('coxa_D')
         coxa_E = request.POST.get('coxa_E')
 
-        # if not nome or not nascimento or not telefone \
-        #         or not email or not rg or not cpf or not bairro \
-        #         or not rua or not numero :
-        #     messages.error(request, "Não pode deixar campos da área de dados pessoais em branco!")
-        #     return render(request, 'template_alunos/cad_alunos.html')
+        if not nome or not nascimento or not telefone \
+                or not email or not rg or not cpf or not bairro \
+                or not rua or not num_residencia :
+            messages.error(request, "Não pode deixar campos da área de dados pessoais em branco!")
+            return render(request, 'template_alunos/cad_alunos.html')
         try:
             validate_email(email)
         except:
