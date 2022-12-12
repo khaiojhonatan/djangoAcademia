@@ -3,7 +3,9 @@ from django.db import models
 
 # Create your models here.
 class DadosAcademia(models.Model):
-    dat_medidas = models.DateField(format("DD-MM-YYYY"))
+
+    id_medidas = models.AutoField(db_column= 'ID', primary_key=True)
+    dat_medidas = models.DateField()
     altura = models.FloatField(blank =True, null= True)
     peso = models.FloatField(blank =True, null= True)
     imc = models.FloatField(blank =True, null= True)
@@ -26,11 +28,12 @@ class DadosAcademia(models.Model):
 
 class Alunos(models.Model):
 
+    aluno_id = models.AutoField(db_column= 'ID', primary_key=True)
     inscricao = models.DateField()
     nome = models.CharField(max_length=50)
-    nascimento = models.DateField()        
+    nascimento = models.CharField(max_length=11)        
     telefone = models.CharField(max_length=25)
-    email = models.EmailField()
+    email = models.CharField(max_length=80)
     rg = models.CharField(max_length=11)
     cpf = models.CharField(max_length=16)
     bairro = models.CharField(max_length=40)
