@@ -4,8 +4,8 @@ from django.core.paginator import Paginator
 from django.core.validators import validate_email
 from django.contrib.auth.models import AbstractUser, User
 from django.contrib.auth.decorators import login_required
-from .models import Alunos
-from .forms import AlunosModelForm
+from .models import Alunos, DadosAcademia
+from .forms import AlunosModelForm, DadosAcademiaModelForm
 from datetime import date
 # Create your views here.
 
@@ -74,15 +74,15 @@ def cad_alunos(request):
             messages.error(request, "Email já existente!")
             return render(request, 'template_alunos/cad_alunos.html')
 
-
-        alunos = Alunos.objects.create(inscricao =inscricao, nome=nome, nascimento=nascimento, telefone=telefone , email=email,
-                                        rg=rg, cpf=cpf, bairro=bairro, rua=rua, num_residencia=num_residencia)
-
-
         dadosAcademia = DadosAcademia.objects.create(dat_medidas=dat_medidas, altura =altura, peso = peso, imc = imc, gordura = gordura,
                                     liquido = liquido, pa = pa, pulso = pulso, bat_cardiaco = bat_cardiaco, quadriceps = quadriceps,
                                     torax = torax, cintura = cintura, culote = culote, biceps_D = biceps_D, biceps_E = biceps_E,
                                     coxa_D = coxa_D, coxa_E = coxa_E)
+
+        alunos = Alunos.objects.create(inscricao = inscricao, nome=nome, nascimento=nascimento, telefone=telefone , email=email,
+                                        rg=rg, cpf=cpf, bairro=bairro, rua=rua, num_residencia=num_residencia)
+
+
 
         alunos.save()
         dadosAcademia.save()

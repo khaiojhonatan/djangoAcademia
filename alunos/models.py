@@ -4,8 +4,7 @@ from django.db import models
 # Create your models here.
 class DadosAcademia(models.Model):
 
-    id_medidas = models.AutoField(db_column= 'ID', primary_key=True)
-    dat_medidas = models.DateField()
+    dat_medidas = models.CharField(max_length=7)
     altura = models.FloatField(blank =True, null= True)
     peso = models.FloatField(blank =True, null= True)
     imc = models.FloatField(blank =True, null= True)
@@ -23,12 +22,8 @@ class DadosAcademia(models.Model):
     coxa_D = models.FloatField(blank =True, null= True)
     coxa_E = models.FloatField(blank =True, null= True)
 
-    def __str__(self):
-        return self.nome
-
 class Alunos(models.Model):
 
-    aluno_id = models.AutoField(db_column= 'ID', primary_key=True)
     inscricao = models.DateField()
     nome = models.CharField(max_length=50)
     nascimento = models.CharField(max_length=11)        
