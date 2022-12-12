@@ -53,12 +53,13 @@
                   <tbody>
                     {% for alunos in alunos %}
                     <tr>
+                      <td>{{alunos.inscricao}}</td>
                       <td>{{alunos.nome}}</a> </td>
-                      <td>{{produto.telefone}}</td>
-                      <td>{{produto.email}}</td>
-                      <td>{{produto.cpf}}</td>
+                      <td>{{alunos.telefone}}</td>
+                      <td>{{alunos.email}}</td>
+                      <td>{{alunos.cpf}}</td>
                       <td>
-                        <a title='editar' href="{% url 'edit__cad_aluno'%}"><img src="{% static 'img/editar.png'%}"
+                        <a title='editar' href="{% url 'edit_cad_aluno'%}"><img src="{% static 'img/editar.png'%}"
                             width='33px'></a>
                       </td>
                       <td>

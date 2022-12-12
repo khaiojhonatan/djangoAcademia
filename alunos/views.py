@@ -22,7 +22,7 @@ def alunos(request):
     page = request.GET.get('page')
     alunos = paginator.get_page(page)
 
-    return render(request, 'template_alunos/alunos.html')
+    return render(request, 'template_alunos/alunos.html', {'alunos':alunos})
     
 @login_required(login_url='login')
 def cad_alunos(request):
