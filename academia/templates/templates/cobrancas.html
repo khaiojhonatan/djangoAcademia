@@ -61,13 +61,13 @@
                     </td>
                     <td class="align-middle text-center text-sm">
                       {% if alunos.divida == False %}
-                      <span class="badge badge-sm bg-gradient-success"></span>
+                        <span class="badge badge-sm bg-gradient-success"></span>
                       {% else %}
-                      <span class="badge badge-sm bg-gradient-primary"></span>
+                        <span class="badge badge-sm bg-gradient-primary"></span>
                       {% endif %}
                     </td>
                     <td>
-                      <a title='editar' href="{% url 'cobrancas'%}"> PAGOU </a>
+                      <a title="editar" href="{% url 'cobrancas' alunos.id %}"> PAGOU </a>
                     </td>
                     </td>
                   </tr>

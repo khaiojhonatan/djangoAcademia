@@ -35,6 +35,7 @@ class Alunos(models.Model):
     bairro = models.CharField(max_length=40)
     rua = models.CharField(max_length=80)
     num_residencia = models.CharField(max_length=10)
+    divida = models.BooleanField(default=True)
     dadoscorporais = models.ForeignKey(DadosAcademia, on_delete=models.CASCADE)
 
     def __str__(self):

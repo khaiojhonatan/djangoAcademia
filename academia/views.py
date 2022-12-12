@@ -11,18 +11,15 @@ def index(request):
     return render(request, 'templates/index.html')
 
 @login_required(login_url='login')
-def cobrancas(request):
+def cobrancas_listagem(request):
     alunos = Alunos.objects.all()        
     return render(request,'templates/cobrancas.html', {'alunos': alunos})
 
 @login_required(login_url='login')
 def cobrancas(request, aluno_id):
     alunos = get_object_or_404(Alunos, id=aluno_id)
-    if request.method == "POST":
-        produto.delete()
-        messages.success(
-            request, f'{produto.nome.upper()} excluído(a) com sucesso!')
-    return redirect('produtos')
+    alunos.divida = False
+    return render(request,'templates/cobrancas.html', {'alunos': alunos})
 
 @login_required(login_url='login')
 def treinos(request):
