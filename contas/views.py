@@ -29,7 +29,7 @@ def sign_out(request):
 
 
 # @login_required(login_url='login')  ------------------------------- DANDO ERRO AO ADICIONAR ESTÁ LINHA ----------------------------------
-
+@login_required(login_url='login')
 def sign_up(request):
     if request.method == "POST":
 

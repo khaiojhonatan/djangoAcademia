@@ -1,9 +1,5 @@
 from django.db import models
 
-SEXO_CHOICES = (
-    ('Masculino', 'Masculino'),
-    ('Feminino', 'Feminino')
-)
 
 # Create your models here.
 class DadosAcademia(models.Model):
@@ -30,10 +26,9 @@ class DadosAcademia(models.Model):
 
 class Alunos(models.Model):
 
-    inscricao = models.DateField(auto_now = True)
+    inscricao = models.DateField()
     nome = models.CharField(max_length=50)
-    sexo = models.CharField(max_length=9, choices=SEXO_CHOICES)
-    nascimento = models.DateField(auto_now = True   )        
+    nascimento = models.DateField()        
     telefone = models.CharField(max_length=25)
     email = models.EmailField()
     rg = models.CharField(max_length=11)

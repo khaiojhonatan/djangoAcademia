@@ -357,6 +357,29 @@ code {
   z-index: 1;
 }
 
+
+#modalf {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  visibility: hidden;
+}
+#modalf:target {
+  opacity: 1;
+  visibility: visible;
+}
+#modalf:target .modal-body {
+  opacity: 1;
+  transform: translateY(1);
+}
+#modalf .modal-body {
+  max-width: 24%;
+  opacity: 0;
+  transform: translateX(130px);
+  transition: opacity 0.25s ease-in-out;
+  z-index: 1;
+}
+
+
 .outside-trigger {
   bottom: 0;
   cursor: default;
