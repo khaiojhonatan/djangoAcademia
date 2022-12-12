@@ -1,8 +1,13 @@
 from django.db import models
 
+SEXO_CHOICES = (
+    ('Masculino', 'Masculino'),
+    ('Feminino', 'Feminino')
+)
+
 # Create your models here.
 class DadosAcademia(models.Model):
-    dat_medidas = models.DateField()
+    dat_medidas = models.DateField(format("DD-MM-YYYY"))
     altura = models.FloatField(blank =True, null= True)
     peso = models.FloatField(blank =True, null= True)
     imc = models.FloatField(blank =True, null= True)
@@ -20,12 +25,15 @@ class DadosAcademia(models.Model):
     coxa_D = models.FloatField(blank =True, null= True)
     coxa_E = models.FloatField(blank =True, null= True)
 
+    def __str__(self):
+        return self.nome
+
 class Alunos(models.Model):
 
     inscricao = models.DateField(auto_now = True)
     nome = models.CharField(max_length=50)
-    # sexo
-    nascimento = models.DateField()
+    sexo = models.CharField(max_length=9, choices=SEXO_CHOICES)
+    nascimento = models.DateField(auto_now = True   )        
     telefone = models.CharField(max_length=25)
     email = models.EmailField()
     rg = models.CharField(max_length=11)
@@ -34,6 +42,7 @@ class Alunos(models.Model):
     rua = models.CharField(max_length=80)
     num_residencia = models.CharField(max_length=10)
     dadoscorporais = models.ForeignKey(DadosAcademia, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.nome
 
