@@ -9,8 +9,6 @@ from .forms import AlunosModelForm, DadosAcademiaModelForm
 from datetime import date
 # Create your views here.
 
-# @login_required(login_url='login')  ------------------------------- DANDO ERRO AO ADICIONAR ESTÁ LINHA ----------------------------------
-
 @login_required(login_url='login')
 def alunos(request):
     if request.GET.get('termo'):
@@ -80,7 +78,7 @@ def cad_alunos(request):
                                     coxa_D = coxa_D, coxa_E = coxa_E)
 
         alunos = Alunos.objects.create(inscricao = inscricao, nome=nome, nascimento=nascimento, telefone=telefone , email=email,
-                                        rg=rg, cpf=cpf, bairro=bairro, rua=rua, num_residencia=num_residencia)
+                                        rg=rg, cpf=cpf, bairro=bairro, rua=rua, num_residencia=num_residencia, dadoscorporais=dadosAcademia)
 
 
 
@@ -89,7 +87,6 @@ def cad_alunos(request):
         messages.success(request, "Registrado com sucesso!")
 
         return redirect('alunos')
-
     return render(request, 'template_alunos/cad_alunos.html')
 
 
