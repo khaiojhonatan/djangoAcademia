@@ -5,6 +5,8 @@ from django.db.models import Q
 from django.core.validators import validate_email
 from django.contrib.auth.models import  User
 from django.contrib.auth.decorators import login_required
+
+from alunos.forms import AlunosModelForm
 from .models import Alunos, DadosAcademia
 from datetime import date
 # Create your views here.
@@ -119,3 +121,17 @@ def edit_cad_aluno(request):
 
     # user = get_object_or_404(User, username=request.GET.get(user.username))
     return render(request, 'contas/edit_cadastro.html')
+
+
+def edit_alunos(request, alunos_cpf):
+    # produto = Produto.objects.get(id=produto_id)
+    alunos = get_object_or_404(Alunos, id=alunos_cpf)
+    form = AlunosModelForm(request.POST or None,
+                            request.FILES or None, instance=alunos)
+    if form.is_valid():
+        form.save()
+        messages.success(
+            request, f'{alunos.nome.upper()} editado(a) com sucesso!')
+        return redirect('alunos')
+    return render(request,
+                  'alunos/editar_alunos.html', {'alunos': alunos, 'form': form})

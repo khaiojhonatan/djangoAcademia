@@ -3,7 +3,7 @@
 * Material Dashboard 2 - v3.0.4
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Product page: https://www.creative-tim.com/product/material-dashboard
 * Copyright 2022 Creative Tim (https://www.creative-tim.com)
 * Licensed under MIT (https://www.creative-tim.com/license)
 * Coded by Creative Tim
@@ -13,87 +13,248 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 {% extends 'base.html' %}
-
+{% load bootstrap4 %}
 {% load static %}
 
-{% block titleh %}Treinos{% endblock titleh %}
+{% block titleh %}
+  {% if alunos %}
+      Editar | {{alunos.nome}}
+  {% else %}
+      Novo aluno
+  {%endif%}
+{% endblock titleh %}
 
-{% block titulo %}Sobre os Treinos{% endblock titulo %}
+{% block titulo %}
+  {% if alunos %}
+      Editar <span style="color: blue; font-weight: bold;">{{alunos.nome}}</span>
+  {% else %}
+      Novo aluno
+  {% endif%}
+{% endblock titulo %}
 
 {% block conteudo %}
-<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-  <div class="container-fluid py-4">
-    <div class="row">
-      <div class="col-12">
-        <div class="card my-4">
-          <div class="card-body px-0 pb-2">
-            <div class="table-responsive p-0">
-              <div class="card-plain">
-                <div class="card-body">
-                  <a href="#modal" role="button" class="button button__link">Treinos para ganho de força</a>
-                </div>
-                <!-- Modal Treino Ganho de força -->
-                <div class="modal-wrapper" id="modal">
-                  <div class="modal-body card" style="background-color: #f1f5f7;" >
-                    <div class="modal-header">
-                      <h2 class="heading">StrongLifts</h2>
-                      <a href="#!" role="button" class="close" aria-label="close this modal">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
-                        </svg>
-                      </a>
+  <form method="POST"
+        class="form"
+        enctype="multipart/form-data"
+        autocomplete="off">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% if alunos %}
+          {% comment %} {% if alunos.mostrar %}
+            <label> Mostrar: <input type="checkbox" name="mostrar" checked> </label><br>
+            {% endif %}     {% endcomment %}
+            <input type="submit" class="btn btn-success" value="Salvar">
+            <a href="{% url 'alunos' %}">
+                <button type="button" class="btn btn-secondary">Voltar</button>
+            </a>
+            <button type='button'
+                    class="btn btn-danger"
+                    data-toggle="modal"
+                    data-target="#modalExemplo{{ alunos.cpf }}">
+                Excluir
+            </button>
+        {% else %}
+            <input type="submit" class="btn btn-success" value="Salvar">
+            <input type="reset" class="btn btn-primary" value="Limpar">
+            <a href="{% url 'alunos' %}">
+                <button type="button" class="btn btn-secondary">Voltar</button>
+            </a>
+        {% endif %}
+    </form>
+     <!-- Modal -->
+    {% if alunos %}
+        {% include 'modulos/_delete_modal.html' %}
+    {% endif %}
+    {% endblock conteudo %}
+
+      
+      
+      </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<main class="main-content  mt-0">
+  <section>
+    <span class="mask bg-gradient-dark opacity-6"></span>
+    <div class="page-header min-vh-100">
+      <div class="container">
+        <div class="d-flex flex-column me-auto ms-lg-auto ">
+          <div class="card card-plain">
+            <div class="card-header">
+            </div>
+            <h4 class="font-weight-bolder" style="text-align: center; font-size: 3em;">Cadastro de Alunos</h4>
+            <div class="card-body">
+              <!-- formulário -->
+      <!--       <form action="{%url 'cad_alunos'%}" method="POST">
+                <fieldset style="border-width: 2px; border-color: black; text-align: center;">
+                  <legend>Dados Pessoais</legend>
+                  {% csrf_token %}
+                  {{ fom.as_p }}
+                  <div class="row2 car mb-2">
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="nome">Nome completo do Aluno </label>
+                      <input type="text" name="nome" value="{{request.POST.nome}}" class="form-control" id="nome"
+                        autocomplete="off">
                     </div>
-                    <div style="display: grid;">
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Preço</th>
-                                <th>Descrição</th>
-                                <th>Categoria</th>
-                                <th colspan="2">Operações</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {% for produto in produtos %}
-                              <tr>
-                                <td>{{produto.id}}</td>
-                                <td> <a href="{% url 'edit_produto' produto.id %}">{{produto.nome}}</a> </td>
-                                <td>{{produto.preco}}</td>
-                                <td>{{produto.descricao}}</td>
-                                <td>{{produto.categoria}}</td>
-                                <td>
-                                  <a title='editar' href="{% url 'edit_produto' produto.id %}"><img src="{% static '/vendor/images/editar.png'%}"
-                                      width='33px'></a>
-                                </td>
-                                <td>
-                                  <a title='excluir' data-toggle="modal" data-target="#modalExemplo{{produto.id}}"><img
-                                      src="{% static '/vendor/images/excluir.png'%}" width='35px'></a>
-                                </td>
-                                <!-- Modal -->
-                                {% include 'modulos/_delete_modal.html'%}
-                              </tr>
-                              {%endfor%}
-                            </tbody>
-                          </table>
-                          <!-- Paginacao -->
-                          {%include 'modulos/_paginacao_nav.html'%}
-                          
-                          {%endblock conteudo%}
+
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="nascimento">Nascimento </label>
+                      <input type="text" name="nascimento" value="{{request.POST.nascimento}}" class="form-control"
+                        id="nascimento" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="telefone">Telefone: </label>
+                      <input type="text" name="telefone" value="{{request.POST.telefone}}" class="form-control"
+                        id="telefone" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="email">E-mail: </label>
+                      <input type="email" name="email" value="{{request.POST.email}}" class="form-control" id="email"
+                        autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="rg">RG</label>
+                      <input type="text" name="rg" value="{{request.POST.rg}}" class="form-control" id="rg"
+                        autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="cpf">CPF</label>
+                      <input type="text" name="cpf" value="{{request.POST.cpf}}" class="form-control" id="cpf"
+                        autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="bairro">Bairro</label>
+                      <input type="text" name="bairro" value="{{request.POST.bairro}}" class="form-control" id="bairro"
+                        autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="rua">Rua</label>
+                      <input type="text" name="rua" value="{{request.POST.rua}}" class="form-control" id="rua"
+                        autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="num_residencia">Nº da Residência</label>
+                      <input type="text" name="num_residencia" value="{{request.POST.num_residencia}}"
+                        class="form-control" id="num_residencia" autocomplete="off">
+                    </div>
+
+                  </div>
+                </fieldset>
+                <fieldset style="border-width: 2px; border-color: black; text-align: center;">
+                  <legend>Dados para a Academia</legend>
+                  <div class="row2 car mb-2">
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="dat_medidas">Data de Coleta das Medidas</label>
+                      <input type="text" name="dat_medidas" value="{{request.POST.dat_medidas}}" class="form-control"
+                        id="dat_medidas" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="altura">Altura</label>
+                      <input type="number" name="altura" value="{{request.POST.altura}}" class="form-control"
+                        id="altura" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="peso">Peso</label>
+                      <input type="number" name="peso" value="{{request.POST.peso}}" class="form-control" id="peso"
+                        autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="imc">Índice de Massa muscular</label>
+                      <input type="number" name="imc" value="{{request.POST.imc}}" class="form-control" id="imc"
+                        autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="gordura">Gordura</label>
+                      <input type="number" name="gordura" value="{{request.POST.gordura}}" class="form-control"
+                        id="gordura" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="liquido">Líquido</label>
+                      <input type="number" name="liquido" value="{{request.POST.liquido}}" class="form-control"
+                        id="liquido" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="pa">Pressão Artérial</label>
+                      <input type="number" name="pa" value="{{request.POST.pa}}" class="form-control" id="pa"
+                        autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="pulso">Pulso</label>
+                      <input type="number" name="pulso" value="{{request.POST.pulso}}" class="form-control" id="pulso"
+                        autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="bat_cardiaco">Batimento Cardiaco</label>
+                      <input type="number" name="bat_cardiaco" value="{{request.POST.bat_cardiaco}}"
+                        class="form-control" id="bat_cardiaco" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="quadriceps">Quádriceps</label>
+                      <input type="number" name="quadriceps" value="{{request.POST.quadriceps}}" class="form-control"
+                        id="quadriceps" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="torax">Torax</label>
+                      <input type="number" name="torax" value="{{request.POST.torax}}" class="form-control" id="torax"
+                        autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="cintura">Cintura</label>
+                      <input type="number" name="cintura" value="{{request.POST.cintura}}" class="form-control"
+                        id="cintura" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="culote">Culote</label>
+                      <input type="number" name="culote" value="{{request.POST.culote}}" class="form-control"
+                        id="culote" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="biceps_D">Bíceps Direito</label>
+                      <input type="number" name="biceps_D" value="{{request.POST.biceps_D}}" class="form-control"
+                        id="biceps_D" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="biceps_E">Bíceps Esquerdo</label>
+                      <input type="number" name="biceps_E" value="{{request.POST.biceps_E}}" class="form-control"
+                        id="biceps_E" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="coxa_D">Coxa Direita</label>
+                      <input type="number" name="coxa_D" value="{{request.POST.coxa_D}}" class="form-control"
+                        id="coxa_D" autocomplete="off">
+                    </div>
+                    <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
+                      <label class="form-label" for="coxa_E">Coxa Esquerda</label>
+                      <input type="number" name="coxa_E" value="{{request.POST.coxa_E}}" class="form-control"
+                        id="coxa_E" autocomplete="off">
                     </div>
                   </div>
-                  <a href="#!" class="outside-trigger"></a>
-                </div>
-              </div>
-              <br />
-            </div>
+                </fieldset>
+
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="reset" class="btn btn-primary">Limpar</button>
+              </form>
+              fim do formulário -->
+       <!--    </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 </main>
+{% endblock conteudo %} -->
 
 
 
-{%endblock conteudo%}

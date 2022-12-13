@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block titleh %}
+  {% if alunos %}
+      Editar | {{alunos.nome}}
+  {% else %}
+      Novo aluno
+  {%endif%}
+{% endblock titleh %}
+
+{% block titulo %}
+  {% if alunos %}
+      Editar <span style="color: blue; font-weight: bold;">{{alunos.nome}}</span>
+  {% else %}
+      Novo aluno
+  {% endif%}
+{% endblock titulo %}
+
+{% block conteudo %}
+  <form method="POST"
+        class="form"
+        enctype="multipart/form-data"
+        autocomplete="off">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% if alunos %}
+          {% comment %} {% if alunos.mostrar %}
+            <label> Mostrar: <input type="checkbox" name="mostrar" checked> </label><br>
+            {% endif %}     {% endcomment %}
+            <input type="submit" class="btn btn-success" value="Salvar">
+            <a href="{% url 'alunos' %}">
+                <button type="button" class="btn btn-secondary">Voltar</button>
+            </a>
+            <button type='button'
+                    class="btn btn-danger"
+                    data-toggle="modal"
+                    data-target="#modalExemplo{{ alunos.cpf }}">
+                Excluir
+            </button>
+        {% else %}
+            <input type="submit" class="btn btn-success" value="Salvar">
+            <input type="reset" class="btn btn-primary" value="Limpar">
+            <a href="{% url 'alunos' %}">
+                <button type="button" class="btn btn-secondary">Voltar</button>
+            </a>
+        {% endif %}
+    </form>
+     <!-- Modal -->
+    {% if alunos %}
+        {% include 'modulos/_delete_modal.html' %}
+    {% endif %}
+    {% endblock conteudo %}

@@ -47,9 +47,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {% for alunos in alunos %}
+                  {% for alunos in aluno %}
                   <tr>
-                    <td> {{alunos.id}}
+                    <td> {{alunos.cpf}}
                       <div class="d-flex px-2 py-1">
                         <div class="d-flex flex-column justify-content-center">
                           <h6 class="mb-0 text-sm">{{alunos.nome}}</h6>
@@ -67,7 +67,7 @@
                       {% endif %}
                     </td>
                     <td>
-                      <a title="editar" href="{% url 'cobrancas' alunos.id %}"> PAGOU </a>
+                      <a title="editar" href="{% url 'cobrancas' alunos.cpf %}"> PAGOU </a>
                     </td>
                     </td>
                   </tr>
