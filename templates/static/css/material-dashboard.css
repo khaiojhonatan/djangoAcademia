@@ -379,6 +379,26 @@ code {
   z-index: 1;
 }
 
+#modalAluno {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  visibility: hidden;
+}
+#modalAluno:target {
+  opacity: 1;
+  visibility: visible;
+}
+#modalAluno:target .modal-body {
+  opacity: 1;
+  transform: translateY(1);
+}
+#modalAluno .modal-body {
+  max-width: 24%;
+  opacity: 0;
+  transform: translateX(130px);
+  transition: opacity 0.25s ease-in-out;
+  z-index: 1;
+}
 
 .outside-trigger {
   bottom: 0;

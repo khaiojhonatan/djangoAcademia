@@ -74,17 +74,15 @@ def cad_alunos(request):
             messages.error(request, "Email já existente!")
             return render(request, 'template_alunos/cad_alunos.html')
 
+        
+
+        alunos = Alunos.objects.create(inscricao = inscricao, nome=nome, nascimento=nascimento, telefone=telefone , email=email,
+                                        rg=rg, cpf=cpf, bairro=bairro, rua=rua, num_residencia=num_residencia)
+        alunos.save()
         dadosAcademia = DadosAcademia.objects.create(dat_medidas=dat_medidas, altura =altura, peso = peso, imc = imc, gordura = gordura,
                                     liquido = liquido, pa = pa, pulso = pulso, bat_cardiaco = bat_cardiaco, quadriceps = quadriceps,
                                     torax = torax, cintura = cintura, culote = culote, biceps_D = biceps_D, biceps_E = biceps_E,
-                                    coxa_D = coxa_D, coxa_E = coxa_E)
-
-        alunos = Alunos.objects.create(inscricao = inscricao, nome=nome, nascimento=nascimento, telefone=telefone , email=email,
-                                        rg=rg, cpf=cpf, bairro=bairro, rua=rua, num_residencia=num_residencia, dadoscorporais=dadosAcademia)
-
-
-
-        alunos.save()
+                                    coxa_D = coxa_D, coxa_E = coxa_E,aluno=alunos)
         dadosAcademia.save()
         messages.success(request, "Registrado com sucesso!")
 
