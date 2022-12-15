@@ -37,6 +37,7 @@ def cobrancas(request, aluno_id):
     alunos.divida = False
     return render(request,'templates/cobrancas.html', {'alunos': alunos})
 
+
 @login_required(login_url='login')
 def treinos(request):
     return render(request, 'templates/treinos.html')

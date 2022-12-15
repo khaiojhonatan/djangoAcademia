@@ -93,32 +93,46 @@ def cad_alunos(request):
 @login_required(login_url='login')
 def edit_aluno(request, cpf):
     if request.method == "POST":
-        senha1 = request.POST.get("senha1")
-        senha2 = request.POST.get("senha2")
 
-        if not senha1 or not senha2:
-            messages.error(request, "Não pode deixar as senhas em branco!")
-            return render(request, 'template_alunos/edit_aluno.html')
+        nascimento = request.POST.get('nascimento')
+        telefone = request.POST.get('telefone')
+        email = request.POST.get('email')
+        rg = request.POST.get('rg')
+        bairro = request.POST.get('bairro')
+        rua = request.POST.get('rua')
+        num_residencia = request.POST.get('num_residencia')
+        
+        if not nascimento or not telefone \
+                or not email or not rg or not bairro \
+                or not rua or not num_residencia :
+            messages.error(request, "Não pode deixar campos da área de dados pessoais em branco!")
+            return render(request, 'template_alunos/cad_alunos.html')
+        try:
+            validate_email(email)
+        except:
+            messages.info(request, "E-mail inválido!")
+            return render(request, 'template_alunos/cad_alunos.html')
 
-        if len(senha1)<8:
-            messages.error(request, "Senha muito curta!")
-            return render(request, 'template_alunos/edit_aluno.html')
-
-        if senha1 != senha2:
-            messages.error(request, "Senhas diferentes!")
-            return render(request, 'template_alunos/edit_aluno.html')
-
-        user = get_object_or_404(User, username=request.user)
-
-        user.set_password(senha1)
-        user.save()
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email já existente!")
+            return render(request, 'template_alunos/cad_alunos.html')
+        
+        aluno = get_object_or_404(Alunos, cpf=cpf)
+        aluno.nascimento = nascimento
+        aluno.telefone = telefone
+        aluno.email = email
+        aluno.rg = rg
+        aluno.bairro = bairro
+        aluno.num_residencia = num_residencia
+        
+        aluno.save()
 
         messages.success(request, "Senha alterada com sucesso")
 
-        return redirect('login')
+        return redirect('alunos')
 
-    user = get_object_or_404(Alunos, pk=cpf)
-    form = AlunosModelForm(request.POST or None, instance=user)
+    aluno = get_object_or_404(Alunos, cpf=cpf)
+    form = AlunosModelForm(request.POST or None, instance=aluno)
     return render(request, 'template_alunos/edit_aluno.html', {'form': form})
 
 
