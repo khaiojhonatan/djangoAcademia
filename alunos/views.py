@@ -93,7 +93,7 @@ def cad_alunos(request):
 
 
 @login_required(login_url='login')
-def edit_aluno(request):
+def edit_aluno(request, cpf):
     if request.method == "POST":
         senha1 = request.POST.get("senha1")
         senha2 = request.POST.get("senha2")
@@ -119,8 +119,9 @@ def edit_aluno(request):
 
         return redirect('login')
 
-    # user = get_object_or_404(User, username=request.GET.get(user.username))
-    return render(request, 'template_alunos/edit_aluno.html')
+    user = get_object_or_404(Alunos, pk=cpf)
+    form = AlunosModelForm(request.POST or None, instance=user)
+    return render(request, 'template_alunos/edit_aluno.html', {'form': form})
 
 
 # def edit_aluno(request, alunos_cpf):

@@ -13,6 +13,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% load static %}
 
 {% block titleh %}Cobrança{% endblock titleh %}
@@ -23,6 +24,7 @@
 
 <!-- Page Content -->
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+  {% bootstrap_messages %}
   <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">

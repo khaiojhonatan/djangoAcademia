@@ -2,7 +2,6 @@
 <html lang="pt-br">
 
 <head>
-  {% load bootstrap4 %}
 
   {%include 'modulos/_base_head.html'%}
  
@@ -10,7 +9,6 @@
 </head>
 
 <body class="body"> 
-  {% bootstrap_messages %}
   {% if request.user.is_authenticated %}
 
     {%include 'modulos/_base_sidebar.html'%}
