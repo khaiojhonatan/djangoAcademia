@@ -94,6 +94,7 @@ def cad_alunos(request):
 def edit_aluno(request, cpf):
     if request.method == "POST":
 
+        nome = request.POST.get('nome') 
         nascimento = request.POST.get('nascimento')
         telefone = request.POST.get('telefone')
         email = request.POST.get('email')
@@ -116,8 +117,9 @@ def edit_aluno(request, cpf):
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email já existente!")
             return render(request, 'template_alunos/cad_alunos.html')
-        
+
         aluno = get_object_or_404(Alunos, cpf=cpf)
+        aluno.nome = nome
         aluno.nascimento = nascimento
         aluno.telefone = telefone
         aluno.email = email
@@ -127,7 +129,7 @@ def edit_aluno(request, cpf):
         
         aluno.save()
 
-        messages.success(request, "Senha alterada com sucesso")
+        messages.success(request, "Informações do usuário alteradas com sucesso")
 
         return redirect('alunos')
 
