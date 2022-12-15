@@ -1,7 +1,11 @@
-from django.shortcuts import render
-from alunos.models import Alunos
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.core.validators import validate_email
+from django.contrib.auth.models import  User
+from django.core.paginator import Paginator
+from django.contrib import messages
+from alunos.models import Alunos
+from django.db.models import Q
 
 
 
@@ -22,7 +26,7 @@ def cobrancas(request, aluno_id):
         alunos = Alunos.objects.filter(Q(nome__icontains=termo)
                                           | Q(cpf__icontains=termo))
     else:
-        alunos = Alunos.objects.all()
+        alunos = Alunos.objects.all().order_by('-inscricao')
 
     paginator = Paginator(alunos, 10)
     page = request.GET.get('page')
