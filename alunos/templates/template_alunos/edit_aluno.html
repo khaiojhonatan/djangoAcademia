@@ -17,18 +17,14 @@
       Novo aluno
   {% endif%}
 {% endblock titulo %}
-
 {% block conteudo %}
-  <form method="POST"
-        class="form"
-        enctype="multipart/form-data"
-        autocomplete="off">
+    <form method="POST"
+          class="form"
+          enctype="multipart/form-data"
+          autocomplete="off">
         {% csrf_token %}
         {% bootstrap_form form %}
-        {% if alunos %}
-          {% comment %} {% if alunos.mostrar %}
-            <label> Mostrar: <input type="checkbox" name="mostrar" checked> </label><br>
-            {% endif %}     {% endcomment %}
+        {% if produto %}
             <input type="submit" class="btn btn-success" value="Salvar">
             <a href="{% url 'alunos' %}">
                 <button type="button" class="btn btn-secondary">Voltar</button>
@@ -36,7 +32,7 @@
             <button type='button'
                     class="btn btn-danger"
                     data-toggle="modal"
-                    data-target="#modalExemplo{{ alunos.cpf }}">
+                    data-target="#modalExemplo{{ produto.id }}">
                 Excluir
             </button>
         {% else %}
@@ -48,7 +44,7 @@
         {% endif %}
     </form>
      <!-- Modal -->
-    {% if alunos %}
+    {% if produto %}
         {% include 'modulos/_delete_modal.html' %}
     {% endif %}
-    {% endblock conteudo %}
+{% endblock conteudo %}

@@ -17,9 +17,18 @@ def cobrancas_listagem(request):
 
 @login_required(login_url='login')
 def cobrancas(request, aluno_id):
-    alunos = get_object_or_404(Alunos, id=aluno_id)
-    alunos.divida = False
-    return render(request,'templates/cobrancas.html', {'alunos': alunos})
+    if request.GET.get('termo'):
+        termo = request.GET.get('termo')
+        alunos = Alunos.objects.filter(Q(nome__icontains=termo)
+                                          | Q(cpf__icontains=termo))
+    else:
+        alunos = Alunos.objects.all()
+
+    paginator = Paginator(alunos, 10)
+    page = request.GET.get('page')
+    alunos = paginator.get_page(page)
+
+    return render(request, 'templates/cobrancas.html', {'alunos':alunos})
 
 @login_required(login_url='login')
 def treinos(request):

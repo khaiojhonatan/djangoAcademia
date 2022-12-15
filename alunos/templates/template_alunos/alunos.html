@@ -45,7 +45,6 @@
                       <th>Data de Inscrição</th>
                       <th>Nome</th>
                       <th>Telefone</th>
-                      <th>Email</th>
                       <th>CPF</th>
                       <th colspan="2">Operações</th>
                     </tr>
@@ -56,15 +55,16 @@
                       <td>{{alunos.inscricao}}</td>
                       <td>{{alunos.nome}}</a> </td>
                       <td>{{alunos.telefone}}</td>
-                      <td>{{alunos.email}}</td>
                       <td>{{alunos.cpf}}</td>
                       <td>
-                        <a title='editar' href="{% url 'editar_alunos' %}"><img src="{% static 'img/editar.png'%}"
-                            width='33px'></a>
+                        <a title='editar' href="{% url 'editar_aluno' %}"><img src="{% static 'img/editar.png'%}"
+                            width='33px'>
+                        </a>
                       </td>
                       <td>
-                        <a title='excluir' data-toggle="modal" data-target="#modalExemplo{{produto.id}}"><img
-                            src="{% static 'img/excluir.png'%}" width='35px'></a>
+                        <a title='excluir' data-toggle="modal" data-target="#modalExemplo{{alunos.id}}"><img
+                            src="{% static 'img/excluir.png'%}" width='35px'>
+                        </a>
                       </td>
                     </tr>
                     {%endfor%}

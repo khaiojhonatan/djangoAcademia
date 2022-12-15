@@ -93,22 +93,22 @@ def cad_alunos(request):
 
 
 @login_required(login_url='login')
-def edit_cad_aluno(request):
+def edit_aluno(request):
     if request.method == "POST":
         senha1 = request.POST.get("senha1")
         senha2 = request.POST.get("senha2")
 
         if not senha1 or not senha2:
             messages.error(request, "Não pode deixar as senhas em branco!")
-            return render(request, 'contas/edit_cadastro.html')
+            return render(request, 'template_alunos/edit_aluno.html')
 
         if len(senha1)<8:
             messages.error(request, "Senha muito curta!")
-            return render(request, 'contas/edit_cadastro.html')
+            return render(request, 'template_alunos/edit_aluno.html')
 
         if senha1 != senha2:
             messages.error(request, "Senhas diferentes!")
-            return render(request, 'contas/edit_cadastro.html')
+            return render(request, 'template_alunos/edit_aluno.html')
 
         user = get_object_or_404(User, username=request.user)
 
@@ -120,18 +120,18 @@ def edit_cad_aluno(request):
         return redirect('login')
 
     # user = get_object_or_404(User, username=request.GET.get(user.username))
-    return render(request, 'contas/edit_cadastro.html')
+    return render(request, 'template_alunos/edit_aluno.html')
 
 
-def edit_alunos(request, alunos_cpf):
-    # produto = Produto.objects.get(id=produto_id)
-    alunos = get_object_or_404(Alunos, id=alunos_cpf)
-    form = AlunosModelForm(request.POST or None,
-                            request.FILES or None, instance=alunos)
-    if form.is_valid():
-        form.save()
-        messages.success(
-            request, f'{alunos.nome.upper()} editado(a) com sucesso!')
-        return redirect('alunos')
-    return render(request,
-                  'alunos/editar_alunos.html', {'alunos': alunos, 'form': form})
+# def edit_aluno(request, alunos_cpf):
+#     # produto = Produto.objects.get(id=produto_id)
+#     alunos = get_object_or_404(Alunos, id=alunos_cpf)
+#     form = AlunosModelForm(request.POST or None,
+#                             request.FILES or None, instance=alunos)
+#     if form.is_valid():
+#         form.save()
+#         messages.success(
+#             request, f'{alunos.nome.upper()} editado(a) com sucesso!')
+#         return redirect('alunos')
+#     return render(request,
+#                   'alunos/editar_alunos.html', {'alunos': alunos, 'form': form})
