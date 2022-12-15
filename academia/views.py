@@ -32,9 +32,11 @@ def cobrancas_listagem(request):
     return render(request,'templates/cobrancas.html', {'alunos': alunos})
 
 @login_required(login_url='login')
-def cobrancas(request, aluno_id):
-    alunos = get_object_or_404(Alunos, id=aluno_id)
+def cobrancas(request, cpf):
+    alunos = get_object_or_404(Alunos, pk=cpf)
     alunos.divida = False
+    alunos.save()
+    alunos= Alunos.objects.all().order_by('inscricao')
     return render(request,'templates/cobrancas.html', {'alunos': alunos})
 
 
