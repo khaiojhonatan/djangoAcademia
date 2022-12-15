@@ -36,7 +36,7 @@ class Alunos(models.Model):
     rua = models.CharField(max_length=80)
     num_residencia = models.CharField(max_length=10)
     divida = models.BooleanField(default=True)
-    dadoscorporais = models.ForeignKey(DadosAcademia, on_delete=models.CASCADE)
+    dadoscorporais = models.ForeignKey(DadosAcademia, on_delete=models.CASCADE, blank = True, null = True)
 
     def __str__(self):
         return self.nome

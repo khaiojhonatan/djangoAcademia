@@ -16,9 +16,9 @@ def alunos(request):
     if request.GET.get('termo'):
         termo = request.GET.get('termo')
         alunos = Alunos.objects.filter(Q(nome__icontains=termo)
-                                          | Q(cpf__icontains=termo)).order_by('-inscricao')
+                                          | Q(cpf__icontains=termo)).order_by('-nome')
     else:
-        alunos = Alunos.objects.all().order_by('-inscricao')
+        alunos = Alunos.objects.all().order_by('-nome')
 
     paginator = Paginator(alunos, 10)
     page = request.GET.get('page')
