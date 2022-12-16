@@ -1,106 +1,107 @@
 {% load static %}
-<aside class="cor sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dak" id="sidenav-main">
-    <div class="sidenav-header">
-      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href="{% url 'index' %}">
-        <img src="{% static 'img/logos/logo_espacoFit.png' %}"style="max-height: 44px;"  class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold text-white">Espaço Fit</span>
-        <hr class="horizontal dark my-3">
-      </a>
-    </div>
-  
-  
-    <hr class="horizontal light mt-0 mb-2">
-  
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-white"href="{% url 'alunos'%}">    
-            <span class="nav-link-text ms-1">Alunos</span>
-          </a>
-        </li>
+<aside
+  class="cor sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dak"
+  id="sidenav-main">
+  <div class="sidenav-header">
+    <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+      aria-hidden="true" id="iconSidenav"></i>
+    <a class="navbar-brand m-0" href="{% url 'index' %}">
+      <img src="{% static 'img/logos/logo_espacoFit.png' %}" style="max-height: 44px;" class="navbar-brand-img h-100"
+        alt="main_logo">
+      <span class="ms-1 font-weight-bold text-white">Espaço Fit</span>
+      <hr class="horizontal dark my-3">
+    </a>
+  </div>
 
+
+  <hr class="horizontal light mt-0 mb-2">
+
+  <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'alunos'%}">
+          <span class="nav-link-text ms-1">Alunos</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white " href="{% url 'treinos' %}">
+          <span class="nav-link-text ms-1">Treinos</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white " href="{% url 'cobrancas_listagem' %}">
+          <span class="nav-link-text ms-1">Cobrança</span>
+        </a>
+      </li>
+      <button onclick="clicar()" class="border-0" style="background-color: #a8a8a800;">
+        <h6 class="nav-link-text ms-1 nav-link text-white " style="font-size: 1rem;">Funcionários</h6>
+      </button>
+      <div id="list" style="display: none; background-color: #7e7e7e48; border-radius: 5px;">
         <li class="nav-item">
-          <a class="nav-link text-white " href="{% url 'treinos' %}">
-            <span class="nav-link-text ms-1">Treinos</span>
+          <a class="nav-link text-white " href="{% url 'sign_up' %}">
+            <span class="nav-link-text ms-1">Novo Funcionário</span>
           </a>
         </li>
-          
         <li class="nav-item">
-          <a class="nav-link text-white " href="{% url 'cobrancas_listagem' %}">
-            <span class="nav-link-text ms-1">Cobrança</span>
+          <a class="nav-link text-white " href="#modalf">
+            <span class="nav-link-text ms-1">Editar Senha </span>
           </a>
-        </li>
-        <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Funcionários</h6>
-        </li>
-          <li class="nav-item">
-            <a class="nav-link text-white " href="{% url 'sign_up' %}">
-              <span class="nav-link-text ms-1">Novo Funcionário</span>
-            </a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link text-white "  href="#modalf">
-              <span class="nav-link-text ms-1">Editar Senha </span>
-            </a>
-            <div class="modal-wrapper" id="modalf">
-              <div class="modal-body card" style="background-color: #a8a8a8;" >
-                <div class="card card-plain">
-                  <div class="modal-header">
-                    <h2 class="heading"></h2>
-                    <a href="#!" role="button" class="close" aria-label="close this modal">
-                      <svg viewBox="0 0 24 24">
-                        <path
-                          d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
-                      </svg>
-                    </a>
-                  </div>
-                  <div class="card-header" style="padding: 8px;">
-                    <h4 class="font-weight-bolder">Editar Cadastro</h4>
-                  </div>
-                  <div class="card-body" >
-                    <!-- formulário -->          
-                    <form method="POST" role="form">
-                      {% csrf_token %}
-                      <div class="input-group input-group-outline mb-3">
-                          <label class="form-label" for="usuario">Usuário: </label>
-                          <input type="text" name="usuario" value="{{request.user.username}}" class="form-control" id="usuario" autocomplete="off" readonly>
-                      </div>
-                      <div class="input-group input-group-outline mb-3">
-                          <label class="form-label" for="email">E-mail: </label>
-                          <input type="email" name="email" value="{{request.user.email}}" class="form-control" id="email" autocomplete="off" readonly>
-                      </div>
-                      <div class="input-group input-group-outline mb-3">
-                          <label class="form-label" for="senha1">Senha: </label>
-                          <input type="password" name="senha1" class="form-control" id="senha1">
-                        </div>
-                      <div class="input-group input-group-outline mb-3">
-                        <label class="form-label" for="senha2">Repita Senha:</label>
-                        <input type="password" name="senha2" class="form-control" id="senha2">
-                      </div>
-                      <button type="submit" class="btn btn-primary">Salvar</button>
-                      <button type="reset" class="btn btn-primary">Limpar</button> 
-                    </form>
+          <div class="modal-wrapper" id="modalf">
+            <div class="modal-body card" style="background-color: #a8a8a8;">
+              <div class="card card-plain">
+                <div class="modal-header">
+                  <h2 class="heading"></h2>
+                  <a href="#!" role="button" class="close" aria-label="close this modal">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+                    </svg>
+                  </a>
+                </div>
+                <div class="card-header" style="padding: 8px;">
+                  <h4 class="font-weight-bolder">Editar Cadastro</h4>
+                </div>
+                <div class="card-body">
+                  <!-- formulário -->
+                  <form method="POST" role="form">
+                    {% csrf_token %}
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label" for="usuario">Usuário: </label>
+                      <input type="text" name="usuario" value="{{request.user.username}}" class="form-control"
+                        id="usuario" autocomplete="off" readonly>
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label" for="email">E-mail: </label>
+                      <input type="email" name="email" value="{{request.user.email}}" class="form-control" id="email"
+                        autocomplete="off" readonly>
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label" for="senha1">Senha: </label>
+                      <input type="password" name="senha1" class="form-control" id="senha1">
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label" for="senha2">Repita Senha:</label>
+                      <input type="password" name="senha2" class="form-control" id="senha2">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="reset" class="btn btn-primary">Limpar</button>
+                  </form>
                   <!-- fim do formulário -->
-                  </div>
                 </div>
               </div>
-              <a href="#!" class="outside-trigger"></a>
             </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link text-white " href="{% url 'sign_out' %}">
-              <span class="nav-link-text ms-1">Sign Out</span>
-            </a>
-          </li>
-          
-        <div class="mt-2 d-flex">
-          <div class="form-check form-switch ps-0 ms-auto my-auto">
-            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+            <a href="#!" class="outside-trigger"></a>
           </div>
-        </div>
-      </ul>
-    </div> 
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{% url 'sign_out' %}">
+            <span class="nav-link-text ms-1">Sign Out</span>
+          </a>
+        </li>
+      </div>
+    </ul>
+  </div>
 </aside>

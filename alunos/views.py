@@ -70,7 +70,7 @@ def cad_alunos(request):
             messages.info(request, "E-mail inválido!")
             return render(request, 'template_alunos/cad_alunos.html')
 
-        if User.objects.filter(email=email).exists():
+        if Alunos.objects.filter(email=email).exists():
             messages.error(request, "Email já existente!")
             return render(request, 'template_alunos/cad_alunos.html')
 
@@ -94,6 +94,56 @@ def cad_alunos(request):
 def edit_aluno(request, cpf):
     if request.method == "POST":
 
+        dat_medidas = request.POST.get('dat_medidas')
+        altura = request.POST.get('altura')
+        peso = request.POST.get('peso')
+        imc = request.POST.get('imc')
+        gordura = request.POST.get('gordura')
+        liquido = request.POST.get('liquido')
+        pa = request.POST.get('pa')
+        pulso = request.POST.get('pulso')
+        bat_cardiaco = request.POST.get('bat_cardiaco')
+        quadriceps = request.POST.get('quadriceps')
+        torax = request.POST.get('torax')
+        cintura = request.POST.get('cintura')
+        culote = request.POST.get('culote')
+        biceps_D = request.POST.get('biceps_D')
+        biceps_E = request.POST.get('biceps_E')
+        coxa_D = request.POST.get('coxa_D')
+        coxa_E = request.POST.get('coxa_E')
+        
+        if not altura or not peso \
+                or not imc or not gordura or not liquido \
+                or not pa or not pulso or not bat_cardiaco \
+                or not quadriceps or not torax or not cintura \
+                or not culote or not biceps_D or not biceps_E \
+                or not coxa_D or not coxa_E :
+            messages.error(request, "Não pode deixar campos da área de dados pessoais em branco!")
+            return render(request, 'template_alunos/alunos.html')
+
+        dadosAcademia = get_object_or_404(Alunos, cpf=cpf)
+        aluno.nome = nome
+        aluno.nascimento = nascimento
+        aluno.telefone = telefone
+        aluno.email = email
+        aluno.rg = rg
+        aluno.bairro = bairro
+        aluno.num_residencia = num_residencia
+        
+        aluno.save()
+
+        messages.success(request, "Informações do Aluno alteradas com sucesso")
+
+        return redirect('alunos')
+
+    aluno = get_object_or_404(Alunos, cpf=cpf)
+    form = AlunosModelForm(request.POST or None, instance=aluno)
+    return render(request, 'template_alunos/edit_aluno.html', {'form': form})
+
+@login_required(login_url='login')
+def add_medidas(request, cpf):
+    if request.method == "POST":
+
         nome = request.POST.get('nome') 
         nascimento = request.POST.get('nascimento')
         telefone = request.POST.get('telefone')
@@ -107,16 +157,16 @@ def edit_aluno(request, cpf):
                 or not email or not rg or not bairro \
                 or not rua or not num_residencia :
             messages.error(request, "Não pode deixar campos da área de dados pessoais em branco!")
-            return render(request, 'template_alunos/cad_alunos.html')
+            return render(request, 'template_alunos/alunos.html')
         try:
             validate_email(email)
         except:
             messages.info(request, "E-mail inválido!")
-            return render(request, 'template_alunos/cad_alunos.html')
+            return render(request, 'template_alunos/alunos.html')
 
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email já existente!")
-            return render(request, 'template_alunos/cad_alunos.html')
+            return render(request, 'template_alunos/alunos.html')
 
         aluno = get_object_or_404(Alunos, cpf=cpf)
         aluno.nome = nome
@@ -129,24 +179,10 @@ def edit_aluno(request, cpf):
         
         aluno.save()
 
-        messages.success(request, "Informações do usuário alteradas com sucesso")
+        messages.success(request, "Informações do Aluno alteradas com sucesso")
 
         return redirect('alunos')
 
     aluno = get_object_or_404(Alunos, cpf=cpf)
     form = AlunosModelForm(request.POST or None, instance=aluno)
     return render(request, 'template_alunos/edit_aluno.html', {'form': form})
-
-
-# def edit_aluno(request, alunos_cpf):
-#     # produto = Produto.objects.get(id=produto_id)
-#     alunos = get_object_or_404(Alunos, id=alunos_cpf)
-#     form = AlunosModelForm(request.POST or None,
-#                             request.FILES or None, instance=alunos)
-#     if form.is_valid():
-#         form.save()
-#         messages.success(
-#             request, f'{alunos.nome.upper()} editado(a) com sucesso!')
-#         return redirect('alunos')
-#     return render(request,
-#                   'alunos/editar_alunos.html', {'alunos': alunos, 'form': form})
