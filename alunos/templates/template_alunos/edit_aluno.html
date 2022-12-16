@@ -28,53 +28,53 @@
                   <div class="row2 car mb-2">
                     <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                       <label class="form-label" for="nome">Nome completo do Aluno </label>
-                      <input type="text" name="nome" value="{{request.get.aluno.nome}}" class="form-control" id="nome"
-                        autocomplete="off">
+                      <input type="text" name="nome" value="{{aluno.nome}}" class="form-control" id="nome"
+                        autocomplete="off" readonly>
                     </div>
                     <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                       <label class="form-label" for="nascimento">Nascimento </label>
-                      <input type="text" name="nascimento" value="{{request.POST.nascimento}}" class="form-control"
-                        id="nascimento" autocomplete="off">
+                      <input type="text" name="nascimento" value="{{aluno.nascimento}}" class="form-control"
+                        id="nascimento" autocomplete="off" readonly>
                     </div>
                     <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                       <label class="form-label" for="telefone">Telefone: </label>
-                      <input type="text" name="telefone" value="{{request.POST.telefone}}" class="form-control"
+                      <input type="text" name="telefone" value="{{aluno.telefone}}" class="form-control"
                         id="telefone" autocomplete="off">
                     </div>
                     <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                       <label class="form-label" for="email">E-mail: </label>
-                      <input type="email" name="email" value="{{request.POST.email}}" class="form-control" id="email"
+                      <input type="email" name="email" value="{{aluno.email}}" class="form-control" id="email"
                         autocomplete="off">
                     </div>
                     <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                       <label class="form-label" for="rg">RG</label>
-                      <input type="text" name="rg" value="{{request.POST.rg}}" class="form-control" id="rg"
+                      <input type="text" name="rg" value="{{aluno.rg}}" class="form-control" id="rg"
                         autocomplete="off"readonly>
                     </div>
                     <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                       <label class="form-label" for="cpf">CPF</label>
-                      <input type="text" name="cpf" value="{{request.POST.cpf}}" class="form-control" id="cpf"
+                      <input type="text" name="cpf" value="{{aluno.cpf}}" class="form-control" id="cpf"
                         autocomplete="off" readonly>
                     </div>
                     <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                       <label class="form-label" for="bairro">Bairro</label>
-                      <input type="text" name="bairro" value="{{request.POST.bairro}}" class="form-control" id="bairro"
+                      <input type="text" name="bairro" value="{{aluno.bairro}}" class="form-control" id="bairro"
                         autocomplete="off">
                     </div>
                     <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                       <label class="form-label" for="rua">Rua</label>
-                      <input type="text" name="rua" value="{{request.POST.rua}}" class="form-control" id="rua"
+                      <input type="text" name="rua" value="{{aluno.rua}}" class="form-control" id="rua"
                         autocomplete="off">
                     </div>
                     <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                       <label class="form-label" for="num_residencia">Nº da Residência</label>
-                      <input type="text" name="num_residencia" value="{{request.POST.num_residencia}}"
+                      <input type="text" name="num_residencia" value="{{aluno.num_residencia}}"
                         class="form-control" id="num_residencia" autocomplete="off">
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary">Salvar</button>
                   <button type="reset" class="btn btn-primary">Limpar</button>
-                  <button type="submit" class="btn btn-primary"><a href="{% url 'add_medidas' alunos.cpf %}">Novas medidas</a></button>
+                  <a href="{% url 'add_medidas' dadosAcademia.id %}"class="btn btn-primary">Novas medidas</a>
                 </form>
               <!-- fim do formulário -->
               </div>

@@ -41,3 +41,6 @@ class DadosAcademia(models.Model):
     coxa_D = models.FloatField(blank =True, null= True)
     coxa_E = models.FloatField(blank =True, null= True)
     aluno= models.ForeignKey(Alunos,on_delete=models.CASCADE,blank=True,null=True)
+
+    def __str__(self):
+        return self.aluno.nome

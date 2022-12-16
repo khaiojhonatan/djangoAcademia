@@ -29,87 +29,87 @@
                     <div class="row2 car mb-2">
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="dat_medidas">Data de Coleta das Medidas</label>
-                        <input type="text" name="dat_medidas" value="{{request.POST.dat_medidas}}" class="form-control"
+                        <input type="text" name="dat_medidas" value="{{dadosAcademia.dat_medidas}}" class="form-control"
                           id="dat_medidas" autocomplete="off" step="0.01">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="altura">Altura</label>
-                        <input type="number" name="altura" value="{{request.POST.altura}}" class="form-control"
+                        <input type="number" name="altura" value="{{dadosAcademia.altura}}" class="form-control"
                           id="altura" autocomplete="off" step="0.01">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="peso">Peso</label>
-                        <input type="number" name="peso" value="{{request.POST.peso}}" class="form-control" id="peso"
+                        <input type="number" name="peso" value="{{dadosAcademia.peso}}" class="form-control" id="peso"
                           autocomplete="off" step="0.01">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="imc">Índice de Massa muscular</label>
-                        <input type="number" name="imc" value="{{request.POST.imc}}" class="form-control" id="imc"
+                        <input type="number" name="imc" value="{{dadosAcademia.imc}}" class="form-control" id="imc"
                           autocomplete="off" step="0.01"  >
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="gordura">Gordura</label>
-                        <input type="number" name="gordura" value="{{request.POST.gordura}}" class="form-control"
+                        <input type="number" name="gordura" value="{{dadosAcademia.gordura}}" class="form-control"
                           id="gordura" autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="liquido">Líquido</label>
-                        <input type="number" name="liquido" value="{{request.POST.liquido}}" class="form-control"
+                        <input type="number" name="liquido" value="{{dadosAcademia.liquido}}" class="form-control"
                           id="liquido" autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="pa">Pressão Artérial</label>
-                        <input type="number" name="pa" value="{{request.POST.pa}}" class="form-control" id="pa"
+                        <input type="number" name="pa" value="{{dadosAcademia.pa}}" class="form-control" id="pa"
                           autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="pulso">Pulso</label>
-                        <input type="number" name="pulso" value="{{request.POST.pulso}}" class="form-control" id="pulso"
+                        <input type="number" name="pulso" value="{{dadosAcademia.pulso}}" class="form-control" id="pulso"
                           autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="bat_cardiaco">Batimento Cardiaco</label>
-                        <input type="number" name="bat_cardiaco" value="{{request.POST.bat_cardiaco}}"
+                        <input type="number" name="bat_cardiaco" value="{{dadosAcademia.bat_cardiaco}}"
                           class="form-control" id="bat_cardiaco" autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="quadriceps">Quádriceps</label>
-                        <input type="number" name="quadriceps" value="{{request.POST.quadriceps}}" class="form-control"
+                        <input type="number" name="quadriceps" value="{{dadosAcademia.quadriceps}}" class="form-control"
                           id="quadriceps" autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="torax">Torax</label>
-                        <input type="number" name="torax" value="{{request.POST.torax}}" class="form-control" id="torax"
+                        <input type="number" name="torax" value="{{dadosAcademia.torax}}" class="form-control" id="torax"
                           autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="cintura">Cintura</label>
-                        <input type="number" name="cintura" value="{{request.POST.cintura}}" class="form-control"
+                        <input type="number" name="cintura" value="{{dadosAcademia.cintura}}" class="form-control"
                           id="cintura" autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="culote">Culote</label>
-                        <input type="number" name="culote" value="{{request.POST.culote}}" class="form-control"
+                        <input type="number" name="culote" value="{{dadosAcademia.culote}}" class="form-control"
                           id="culote" autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="biceps_D">Bíceps Direito</label>
-                        <input type="number" name="biceps_D" value="{{request.POST.biceps_D}}" class="form-control"
+                        <input type="number" name="biceps_D" value="{{dadosAcademia.biceps_D}}" class="form-control"
                           id="biceps_D" autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="biceps_E">Bíceps Esquerdo</label>
-                        <input type="number" name="biceps_E" value="{{request.POST.biceps_E}}" class="form-control"
+                        <input type="number" name="biceps_E" value="{{dadosAcademia.biceps_E}}" class="form-control"
                           id="biceps_E" autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="coxa_D">Coxa Direita</label>
-                        <input type="number" name="coxa_D" value="{{request.POST.coxa_D}}" class="form-control"
+                        <input type="number" name="coxa_D" value="{{dadosAcademia.coxa_D}}" class="form-control"
                           id="coxa_D" autocomplete="off">
                       </div>
                       <div class="input-group input-group-outline mb-3" style="margin: 10px; width: 22%;">
                         <label class="form-label" for="coxa_E">Coxa Esquerda</label>
-                        <input type="number" name="coxa_E" value="{{request.POST.coxa_E}}" class="form-control"
+                        <input type="number" name="coxa_E" value="{{dadosAcademia.coxa_E}}" class="form-control"
                           id="coxa_E" autocomplete="off">
                       </div>
                     </div>

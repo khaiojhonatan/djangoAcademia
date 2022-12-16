@@ -60,12 +60,17 @@
                       <td>{{alunos.cpf}}</td>
                       <td>
                         <a title='editar' href="{% url 'editar_aluno' alunos.cpf %}"><img src="{% static 'img/editar.png'%}"
-                            width='33px'>
+                            width='25px'>
+                        </a>
+                      </td>
+                      <td>
+                        <a title='Olhar edidas' href="{% url 'ver_medidas' dadosAcademia.id %}"><img
+                          src="{% static 'img/olho.png'%}" width="25px" >
                         </a>
                       </td>
                       <td>
                         <a title='excluir' data-toggle="modal" data-target="#modalExemplo{{alunos.id}}"><img
-                            src="{% static 'img/excluir.png'%}" width='35px'>
+                            src="{% static 'img/excluir.png'%}" width='25px'>
                         </a>
                       </td>
                     </tr>
